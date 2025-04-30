@@ -1,2 +1,2 @@
-# Rsut-Srcripts
+# Rust-Srcripts
 Scripting in Rust

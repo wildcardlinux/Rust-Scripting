@@ -1,17 +1,23 @@
+
+use rand::prelude::*;
+use rand::seq::SliceRandom;
+use rand::rng;
 #[derive(Debug)]
 struct Deck {
     cards: Vec<String>,
 }
 
-fn main() {
-    // List of suits
-    // List of face values
+
+impl Deck {
+    fn new() -> Self {
+        // List of suits
     let suits = [
         String::from("Hearts"),
         String::from("Diamonds"),
         String::from("Clubs"),
         String::from("Spades"),
     ];
+    // List of face values
     let face_values = [
         String::from("Ace"),
         String::from("Two"),
@@ -27,8 +33,7 @@ fn main() {
         String::from("Queen"),
         String::from("King"),
     ];
-
-// Cards Drawn
+        // Cards Drawn
     let mut cards = vec![];
 
     for suits in suits.iter() {
@@ -37,10 +42,22 @@ fn main() {
             cards.push(card);
         }
     };
-    // Create a deck of cards
-    let deck = Deck {
-            cards
+    // Return the deck
+    return Deck {
+        cards
     };
-    
+}
+
+    fn shuffle(&mut self) {
+        let mut rng = rng();
+        self.cards.shuffle(&mut rng);
+    }
+}
+
+fn main() {
+   let mut deck = Deck::new(); 
+    // Shuffle the deck
+    deck.shuffle();
+    // Print the shuffled deck
     println!("Here is your deck: {:#?}", deck);
 }
